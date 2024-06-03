@@ -2,7 +2,7 @@ const express = require("express");
 const connectDB = require("./config/db/connection");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
+const path = require("path");
 const app = express();
 
 // Connect to database
@@ -16,6 +16,12 @@ app.use(cors());
 app.use("/api", require("./routes/orders"));
 
 const PORT = process.env.PORT || 8000;
+
+// Frontend
+app.use(express.static(path.join(__dirname, "../client/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
