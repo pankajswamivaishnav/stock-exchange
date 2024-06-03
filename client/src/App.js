@@ -11,10 +11,10 @@ function App() {
 
   const fetchOrders = async () => {
     const pendingRes = await axios.get(
-      "http://localhost:8000/api/pending-orders"
+      "https://stock-exchange-omub.onrender.com/api/pending-orders"
     );
     const completedRes = await axios.get(
-      "http://localhost:8000/api/completed-orders"
+      "https://stock-exchange-omub.onrender.com/api/completed-orders"
     );
     setPendingOrders(pendingRes.data);
     setCompletedOrders(completedRes.data);

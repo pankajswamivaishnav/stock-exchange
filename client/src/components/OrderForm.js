@@ -10,7 +10,10 @@ const OrderForm = ({ fetchOrders, completedOrders, pendingOrders }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const order = { isBuyer, qty: parseInt(qty), price: parseFloat(price) };
-    await axios.post("http://localhost:8000/api/order", order);
+    await axios.post(
+      "https://stock-exchange-omub.onrender.com/api/order",
+      order
+    );
     setQty("");
     setPrice("");
     fetchOrders(); // Fetch the updated orders after placing a new order
