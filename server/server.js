@@ -17,12 +17,6 @@ app.use("/api", require("./routes/orders"));
 
 const PORT = process.env.PORT || 8000;
 
-// Frontend
-app.use(express.static(path.join(__dirname, "../client/build")));
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
-});
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
